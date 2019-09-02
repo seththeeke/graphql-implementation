@@ -1,0 +1,55 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects{
+	repositories {
+        mavenCentral()
+	}
+}
+
+project(':place-service') {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+
+	dependencies {
+    	implementation 'org.springframework.boot:spring-boot-starter-web:2.1.7.RELEASE'
+	}
+}
+
+project(':person-service') {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+
+	dependencies {
+    	implementation 'org.springframework.boot:spring-boot-starter-web:2.1.7.RELEASE'
+	}
+}
+
+project(':app-service') {
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java'
+	apply plugin: 'application'
+	apply plugin: 'eclipse'
+	
+	mainClassName='com.app.service.application.AppServiceApplication.java'
+
+	dependencies {
+		implementation project(':person-service');
+		implementation project(':place-service');
+		implementation 'com.google.guava:guava:26.0-jre'
+    	implementation 'com.graphql-java:graphql-java:11.0'
+    	implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
+    	implementation 'org.springframework.boot:spring-boot-starter-web'
+    	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	}
+}

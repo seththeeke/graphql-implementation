@@ -1,0 +1,24 @@
+type Query {
+	personById(id: ID): Person
+    person(id: ID, firstName: String, lastName: String, placeId: ID): [Person]
+    placeById(id: ID): Place
+    place(id: ID, name: String): [Place]
+    placeSummary(placeId: ID): PlaceSummary
+}
+
+type Person {
+    id: ID
+    firstName: String
+    lastName: String
+    placeId: ID
+}
+
+type Place {
+	id: ID
+	name: String
+}
+
+type PlaceSummary {
+	placeName: String
+	persons: [Person]
+}
