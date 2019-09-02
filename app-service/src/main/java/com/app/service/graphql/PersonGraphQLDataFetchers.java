@@ -1,7 +1,8 @@
 package com.app.service.graphql;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.person.service.Person;
@@ -29,6 +30,14 @@ public class PersonGraphQLDataFetchers {
     	return dataFetchingEnvironment -> {
     		String personId = (String) dataFetchingEnvironment.getArguments().get("id");
     		return this.personService.getPersonById(personId);
+    	};
+    }
+    
+    public DataFetcher updatePerson() {
+    	return dataFetchingEnvironment -> {
+    		Map<String, String> person = (Map<String, String>) dataFetchingEnvironment.getArguments().get("input");
+    		System.out.println(person);
+    		return this.personService.updatePerson(new Person(person.get("id"), person.get("firstName"), person.get("lastname"), person.get("placeId")));
     	};
     }
     

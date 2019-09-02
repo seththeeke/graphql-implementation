@@ -6,6 +6,17 @@ type Query {
     placeSummary(placeId: ID): PlaceSummary
 }
 
+type Mutation {
+    updatePerson(input: PersonRequest): Person
+}
+
+input PersonRequest {
+    id: ID
+    firstName: String
+    lastName: String
+    placeId: String
+}
+
 type Person {
     id: ID
     firstName: String

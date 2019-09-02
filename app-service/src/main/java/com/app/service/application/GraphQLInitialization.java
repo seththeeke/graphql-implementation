@@ -67,6 +67,9 @@ public class GraphQLInitialization {
                         .dataFetcher("place", this.placeGraphQLDataFetchers.getPlace())
                         .dataFetcher("placeSummary", this.appGraphQLDataFetchers.getPlaceSummaryByPlaceId())
                         )
+                .type(newTypeWiring("Mutation")
+                		.dataFetcher("updatePerson", this.personGraphQLDataFetchers.updatePerson())
+                		)
                 .build();
     }
 

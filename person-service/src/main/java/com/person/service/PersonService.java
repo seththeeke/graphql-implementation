@@ -19,4 +19,6 @@ public interface PersonService {
 	 */
 	List<Person> getPersons(Person person);
 	
+	Person updatePerson(Person person);
+	
 }

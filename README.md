@@ -2,7 +2,7 @@
 
 This project is composed of 3 "services", app-service, person-service, and place-service. The app-service is a SpringBootApplication while the person-service and place-service have only java api implementations
 
-This will show how a single service can have a graphql interface reaching to other services. It currently only supports Query
+This will show how a single service can have a graphql interface reaching to other services. It supports both Query and Mutation operations
 
 # Setup
 
@@ -21,6 +21,8 @@ You can start the service by running the main
 Download the GraphQL Playground application and open the app and use the following:
 
 The schema can be found at http://localhost:8080/app-service/graphql and you can see the schema definition in app-service/src/main/resources/schema.graphqls
+
+## Queries
 
 Sample GraphQL Queries:
 #### Get person by id
@@ -68,6 +70,24 @@ There is a single "aggregate" query that will reach into both person and place s
       firstName
       lastName
     }
+  }
+}
+```
+
+## Mutations
+
+There is a single mutation defined in the schema for updating a person
+
+```
+mutation {
+  updatePerson(input: {
+    id: "person-1",
+    firstName: "Bob",
+    lastName: "Marley",
+    placeId: "place-3"
+  }) {
+    id
+    firstName
   }
 }
 ```
