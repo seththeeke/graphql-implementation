@@ -29,7 +29,8 @@ public class PersonServiceImpl implements PersonService{
 		return persons.stream()
 				.filter(personObj -> checkOptionalStringField(personObj.getId(), person.getId())
 						&& checkOptionalStringField(personObj.getFirstName(), person.getFirstName())
-						&& checkOptionalStringField(personObj.getLastName(), person.getLastName()))
+						&& checkOptionalStringField(personObj.getLastName(), person.getLastName())
+						&& checkOptionalStringField(personObj.getPlaceId(), person.getPlaceId()))
 				.collect(Collectors.toList());
 	}
 	
