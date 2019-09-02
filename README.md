@@ -2,6 +2,8 @@
 
 This project is composed of 3 "services", app-service, person-service, and place-service. The app-service is a SpringBootApplication while the person-service and place-service have only java api implementations
 
+This will show how a single service can have a graphql interface reaching to other services. It currently only supports Query
+
 # Setup
 
 Clone this project and build using the gradle wrapper

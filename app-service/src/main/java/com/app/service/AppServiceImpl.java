@@ -11,7 +11,7 @@ import com.place.service.Place;
 import com.place.service.PlaceService;
 
 @Component
-public class AppServiceImpl implements AppService{
+public class AppServiceImpl implements AppService {
 	
 	@Autowired
 	PersonService personService;
